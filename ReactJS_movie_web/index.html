@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<body>
+  <span>Total Clicks : 0</span>
+  <button id="btn">Click me</button>
+</body>
+<!-- 
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+<!-- <script type="text/babel">
+
+  const root = document.getElementById('root')
+  ReactDOM.render(Container, root)
+
+</script> -->
+<script>
+  let counter = 0
+  let span = document.querySelector('span')
+  const button = document.getElementById('btn')
+  function handleClick() {
+    console.log('click')
+    counter += 1
+    span.textContent = `Total Clicks : ${counter}`
+  }
+
+  button.addEventListener('click', handleClick)
+
+</script>
+
+
+</html>
