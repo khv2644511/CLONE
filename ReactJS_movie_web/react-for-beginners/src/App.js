@@ -1,44 +1,22 @@
 import { useState, useEffect } from "react";
-import Button from "./Button";
+
+function Hello() {
+  useEffect(() => {
+    console.log("created!");
+    return () => console.log("destroyed :(");
+  }, []);
+  return <h1>Hello</h1>;
+}
 
 function App() {
-  const [counter, SetValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
-
+  const [showing, setShowing] = useState(false);
   const onClick = () => {
-    SetValue((prev) => prev + 1);
+    setShowing((prev) => !prev);
   };
-  const onChange = (e) => {
-    setKeyword(e.target.value);
-  };
-
-  useEffect(() => {
-    console.log("i run all the time");
-  }, []);
-
-  useEffect(() => {
-    if (keyword !== "" && keyword.length > 6) {
-      console.log("I ren when 'keyword' changes");
-    }
-  }, [keyword]);
-
-  useEffect(() => {
-    console.log("I ren when 'counter' changes");
-  }, [counter]);
-  useEffect(() => {
-    console.log("I ren when 'keyword & counter' changes");
-  }, [keyword, counter]);
-
   return (
     <div>
-      <input
-        value={keyword}
-        onChange={onChange}
-        type="text"
-        placeholder="Search here.."
-      />
-      <h1>{counter}</h1>
-      <button onClick={onClick}>Click me</button>
+      {showing ? <Hello /> : null}
+      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
     </div>
   );
 }
